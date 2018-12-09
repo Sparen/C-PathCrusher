@@ -20,4 +20,4 @@ This utility supports the following (where [] is a stand-in for the rest of the 
 * "[]/." -> "[]/"
 * "[]/a/../[]" -> "[]/[]"
 
-Please note that this code is garbage and was thrown together haphazardly. Not all edge cases were tested. It is not meant for production systems unless you want to risk something going horribly wrong. The '..' simplifier naturally does not work on relative paths - only absolute paths.
+Please note that this code is garbage and was thrown together haphazardly. Not all edge cases were tested. It is not meant for production systems unless you want to risk something going horribly wrong. The '..' simplifier naturally does not work on relative paths - only absolute paths. Test B6 verifies that '..' is maintained in relative paths

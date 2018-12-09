@@ -237,4 +237,6 @@ int main(int argc, char** argv)
   printf ("%s\n", simplify_pathname ("/../../../../b/../a"));
   printf ("Test B5: '/./.././.././.././../././/./././/.//./././/././/././/a.txt'\n");
   printf ("%s\n", simplify_pathname ("/./.././.././.././../././/./././/.//./././/././/././/a.txt"));
+  printf ("Test B6: './../../a'\n");
+  printf ("%s\n", simplify_pathname ("./../../a"));
 }
