@@ -171,9 +171,17 @@ simplify_parents (char* path)
                 }
               // Calculate amount to shift by
               int shiftdist = i - slashindex + 2; // + 2 for the second ./
-              for (int j = slashindex + 1; j < currlen - (shiftdist - 1); j += 1)
+              // If string is not long enough (or ends in .. and not ../[stuff])
+              if (slashindex + 1 + shiftdist >= currlen)
                 {
-                  working_copy[j] = working_copy[j + shiftdist];
+                  working_copy[slashindex + 1] = '\0';
+                }
+              else
+                {
+                  for (int j = slashindex + 1; j < currlen - (shiftdist - 1); j += 1)
+                    {
+                      working_copy[j] = working_copy[j + shiftdist];
+                    }
                 }
               currlen = strlen (working_copy); // Update
               mutcount += 1; // Enable next try of while loop
@@ -239,4 +247,6 @@ int main(int argc, char** argv)
   printf ("%s\n", simplify_pathname ("/./.././.././.././../././/./././/.//./././/././/././/a.txt"));
   printf ("Test B6: './../../a'\n");
   printf ("%s\n", simplify_pathname ("./../../a"));
+  printf ("Test B7: '/a/..'\n");
+  printf ("%s\n", simplify_pathname ("/a/.."));
 }
